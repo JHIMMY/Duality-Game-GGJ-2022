@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
         GameTimeLine = Timeline.Present;
         auMusic.clip = happyClip;
         auMusic.Play();
+
+        Camera.main.backgroundColor = new Color32(137, 144, 144, 255);
     }
 
     void Update()
