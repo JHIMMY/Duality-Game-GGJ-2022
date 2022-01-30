@@ -20,7 +20,14 @@ public class GameManager : MonoBehaviour
 
     public static Timeline GameTimeLine { get; private set; }
 
-    private AudioSource au;
+    [SerializeField]
+    private AudioSource auSFX;
+
+    [SerializeField]
+    private AudioSource auMusic;
+
+    [SerializeField] AudioClip sadClip;
+    [SerializeField] AudioClip happyClip;
 
     private void OnEnable()
     {
@@ -36,8 +43,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        au = GetComponent<AudioSource>();
         GameTimeLine = Timeline.Present;
+        auMusic.clip = happyClip;
+        auMusic.Play();
     }
 
     void Update()
@@ -49,10 +57,13 @@ public class GameManager : MonoBehaviour
     {
         if (GameTimeLine == Timeline.Present)
         {
-            au.PlayOneShot(au.clip);
+            auSFX.PlayOneShot(auSFX.clip);
             cameraAnim.SetTrigger("CameraBlink");
             platformsManager.ChangePlatformsColor(pastColor);
             GameTimeLine = Timeline.Past;
+
+            auMusic.clip = sadClip;
+            auMusic.Play();
         }
     }
 
@@ -60,10 +71,13 @@ public class GameManager : MonoBehaviour
     {
         if (GameTimeLine == Timeline.Past)
         {
-            au.PlayOneShot(au.clip);
+            auSFX.PlayOneShot(auSFX.clip);
             cameraAnim.SetTrigger("CameraBlink");
             platformsManager.ChangePlatformsColor(presentColor);
             GameTimeLine = Timeline.Present;
+
+            auMusic.clip = happyClip;
+            auMusic.Play();
         }
     }
 }
