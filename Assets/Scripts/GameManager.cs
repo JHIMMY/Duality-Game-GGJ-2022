@@ -9,7 +9,7 @@ public enum Timeline
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private Animator cameraAnim;
+    private Animator bgAnimator;
 
     [SerializeField]
     private PlatformsManager platformsManager;
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
         if (GameTimeLine == Timeline.Present)
         {
             auSFX.PlayOneShot(auSFX.clip);
-            cameraAnim.SetTrigger("CameraBlink");
+            bgAnimator.SetTrigger("BackgroundBlink");
             platformsManager.ChangePlatformsToPast();
             GameTimeLine = Timeline.Past;
 
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         if (GameTimeLine == Timeline.Past)
         {
             auSFX.PlayOneShot(auSFX.clip);
-            cameraAnim.SetTrigger("CameraBlink");
+            bgAnimator.SetTrigger("BackgroundBlink");
             platformsManager.ChangePlatformsToPresent();
             GameTimeLine = Timeline.Present;
 

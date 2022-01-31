@@ -2,23 +2,23 @@ using UnityEngine;
 
 public class PlatformControl : MonoBehaviour
 {
-    [SerializeField] private Sprite presentPlatform;
-    [SerializeField] private Sprite pastPlatform;
-
-    private SpriteRenderer sp;    
+    [SerializeField] private GameObject presentPlatform;
+    [SerializeField] private GameObject pastPlatform;
 
     void Awake()
     {
-        sp = GetComponent<SpriteRenderer>();
+        ChangePlatformToPresent();
     }
 
     public void ChangePlatformToPresent()
     {
-        sp.sprite = presentPlatform;
+        presentPlatform.SetActive(true);
+        pastPlatform.SetActive(false);
     }
 
     public void ChangePlatformToPast()
     {
-        sp.sprite = pastPlatform;
+        presentPlatform.SetActive(false);
+        pastPlatform.SetActive(true);
     }
 }
