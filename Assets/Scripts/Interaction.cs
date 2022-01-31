@@ -54,10 +54,23 @@ public class Interaction : MonoBehaviour
             currentObject = collision.gameObject;
             OnDialogStarted?.Invoke();
 
-            var dialog = currentObject.GetComponent<DialogHolder>().DialogScript;
-            dialog.ArrangeDialogList();
 
-            dialogManager.Show(dialog.GetDialogDataList());
+            var holder = currentObject.GetComponent<DialogHolder>();
+            if (GameManager.GameTimeLine == Timeline.Present && holder.IsPresentExclusive ||
+                GameManager.GameTimeLine == Timeline.Past && !holder.IsPresentExclusive)
+            {
+                var dialog = holder.DialogScript;
+                dialog.ArrangeDialogList();
+                dialogManager.Show(dialog.GetDialogDataList());
+            }
+            else
+            {
+                // show encrypted text
+                List<DialogData> dialogDataList = new List<DialogData>();
+                dialogDataList.Add(new DialogData("T%^kC(#@}jct9r;&(*$+k2lf=^,Ug~.]*tg7.>", "Big Head"));
+                dialogDataList.Add(new DialogData("This Text is encrypted!!", "Big Head"));
+                dialogManager.Show(dialogDataList);
+            }            
         }
     }
 

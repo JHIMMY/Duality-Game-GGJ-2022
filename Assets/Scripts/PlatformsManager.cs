@@ -3,21 +3,33 @@ using UnityEngine;
 
 public class PlatformsManager : MonoBehaviour
 {     
-    private List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>();
+    private List<PlatformControl> platformsControls = new List<PlatformControl>();
 
-    private void Awake()
+    private void Start()
     {
         foreach (Transform child in transform)
         {
-            spriteRenderers.Add(child.GetComponent<SpriteRenderer>());
+            var platform = child.GetComponent<PlatformControl>();
+            if (platform != null)
+            {
+                platformsControls.Add(child.GetComponent<PlatformControl>());
+            }
         }
     }
 
-    public void ChangePlatformsColor(Color color)
+    public void ChangePlatformsToPresent()
     {
-        foreach (var sp in spriteRenderers)
+        foreach (var platform in platformsControls)
         {
-            sp.color = color;
+            platform.ChangePlatformToPresent();
+        }
+    }
+
+    public void ChangePlatformsToPast()
+    {
+        foreach (var platform in platformsControls)
+        {
+            platform.ChangePlatformToPast();
         }
     }
 }

@@ -23,8 +23,16 @@ public class DialogMaker : ScriptableObject
         }
     }
 
+
     public List<DialogData> GetDialogDataList()
     {
+        return dialogDataList;
+    }
+
+    public List<DialogData> GetEncryptedDataList()
+    {
+        dialogDataList.Add(new DialogData("T%^kC(#@}jct9r;&(*$+k2lf=^,Ug~.]*tg7.>", "Big Head"));
+        dialogDataList.Add(new DialogData("This Text is encrypted!!", "Big Head"));
         return dialogDataList;
     }
 }

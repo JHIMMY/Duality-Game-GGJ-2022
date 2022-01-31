@@ -7,6 +7,14 @@ public class DialogHolder : MonoBehaviour
     [SerializeField]
     private DialogMaker dialogScript;
 
+    [SerializeField]
+    private bool isPresentExclusive;
+
+    public bool IsPresentExclusive
+    {
+        get { return isPresentExclusive; }
+    }
+
     public DialogMaker DialogScript { 
         get 
         {

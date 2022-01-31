@@ -8,10 +8,6 @@ public enum Timeline
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Platform Colors")]
-    [SerializeField] private Color presentColor;
-    [SerializeField] private Color pastColor;
-
     [SerializeField]
     private Animator cameraAnim;
 
@@ -61,7 +57,7 @@ public class GameManager : MonoBehaviour
         {
             auSFX.PlayOneShot(auSFX.clip);
             cameraAnim.SetTrigger("CameraBlink");
-            platformsManager.ChangePlatformsColor(pastColor);
+            platformsManager.ChangePlatformsToPast();
             GameTimeLine = Timeline.Past;
 
             auMusic.clip = sadClip;
@@ -75,7 +71,7 @@ public class GameManager : MonoBehaviour
         {
             auSFX.PlayOneShot(auSFX.clip);
             cameraAnim.SetTrigger("CameraBlink");
-            platformsManager.ChangePlatformsColor(presentColor);
+            platformsManager.ChangePlatformsToPresent();
             GameTimeLine = Timeline.Present;
 
             auMusic.clip = happyClip;
