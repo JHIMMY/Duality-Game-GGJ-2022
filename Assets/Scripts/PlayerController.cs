@@ -29,18 +29,18 @@ namespace TarodevController {
 
         private bool freezePlayer = false;
 
-        private void OnEnable()
-        {
-            // subscribe to events
-            Interaction.OnObjectInteractStarted += FreezePlayer;
-            Interaction.OnObjectInteractFinished += UnfreezePlayer;
-        }
-        private void OnDisable()
-        {
-            // unsubscribe
-            Interaction.OnObjectInteractStarted -= FreezePlayer;
-            Interaction.OnObjectInteractFinished -= UnfreezePlayer;
-        }
+        //private void OnEnable()
+        //{
+        //    // subscribe to events
+        //    Interaction.OnObjectInteractStarted += FreezePlayer;
+        //    Interaction.OnObjectInteractFinished += UnfreezePlayer;
+        //}
+        //private void OnDisable()
+        //{
+        //    // unsubscribe
+        //    Interaction.OnObjectInteractStarted -= FreezePlayer;
+        //    Interaction.OnObjectInteractFinished -= UnfreezePlayer;
+        //}
 
 
         private void FreezePlayer()

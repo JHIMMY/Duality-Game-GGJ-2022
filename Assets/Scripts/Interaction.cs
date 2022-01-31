@@ -10,34 +10,19 @@ public class Interaction : MonoBehaviour
 
     private GameObject currentObject;
 
-    public static event Action OnObjectInteractStarted;
-    public static event Action OnObjectInteractFinished;
+    public static event Action OnDialogStarted; // the finished event is in the dialogManager
 
     public static event Action OnDrinkingElixir;
     public static event Action OnDrinkingAntidote;
 
-    private void OnEnable()
-    {
-        DialogManager.OnDialogFinished += DialogInteractionFiniched;
-    }
-
-    private void OnDisable()
-    {
-        DialogManager.OnDialogFinished -= DialogInteractionFiniched;
-    }
-
-    private void DialogInteractionFiniched()
-    {
-        OnObjectInteractFinished();
-    }
-
+    //private void OnCollisionEnter2D(Collision2D collision)
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Elixir"))
         {
-            OnObjectInteractStarted?.Invoke();
             currentObject = collision.gameObject;
 
+            OnDialogStarted?.Invoke();
             var elixirTexts = new List<DialogData>();
 
             DialogData elixirSelection = new DialogData("/emote:Sad/Hey! I found an Elixir./wait:0.7/ Should I drink it?", "Big Head");
@@ -50,8 +35,9 @@ public class Interaction : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Antidote"))
         {
-            OnObjectInteractStarted?.Invoke();
             currentObject = collision.gameObject;
+
+            OnDialogStarted?.Invoke();
 
             var antidoteTexts = new List<DialogData>();
 
@@ -65,12 +51,13 @@ public class Interaction : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("ClueObject"))
         {
-            OnObjectInteractStarted?.Invoke();
             currentObject = collision.gameObject;
+            OnDialogStarted?.Invoke();
 
-            var dialog = currentObject.GetComponent<ObjectReader>().Dialog;
-            dialogManager.Show(dialog);
+            var dialog = currentObject.GetComponent<DialogHolder>().DialogScript;
+            dialog.ArrangeDialogList();
 
+            dialogManager.Show(dialog.GetDialogDataList());
         }
     }
 

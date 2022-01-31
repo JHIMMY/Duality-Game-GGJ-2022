@@ -16,6 +16,7 @@ public class DialogMaker : ScriptableObject
     
     public void ArrangeDialogList()
     {
+        dialogDataList.Clear();
         foreach (var sentence in dialogList)
         {
             dialogDataList.Add(new DialogData(sentence, "Big Head")); // second parameter the character

@@ -8,16 +8,10 @@ public class UIController : MonoBehaviour
     private Animator creditsPanelAnimator;
 
     private bool isCreditPanelIn;
-
-    // Start is called before the first frame update
-    void Start()
+    private AudioSource au;
+    private void Awake()
     {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        au = GetComponent<AudioSource>();
     }
 
     public void ToggleCreditsPanel()
@@ -32,5 +26,10 @@ public class UIController : MonoBehaviour
             creditsPanelAnimator.SetTrigger("CreditsIn");
             isCreditPanelIn = true;
         }
+    }
+
+    public void ButtonHoverNoise()
+    {
+        au.PlayOneShot(au.clip);
     }
 }

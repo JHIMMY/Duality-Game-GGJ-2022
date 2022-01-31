@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a567272bbf1c89d4fb454b925b477a81, type: 3}
-  m_Name: Object1Dialog
+  m_Name: TreasureDialog
   m_EditorClassIdentifier: 
-  objectName: Grial1
+  objectName: 
   dialogList:
-  - /emote:Normal/Hola esto es una prueba
-  - "Este di\xE1logo deber\xEDa ser preparado..."
-  - "y mostrado en el sistema de di\xE1logos./close/"
+  - /emote:Normal/This is a very rare object.
+  - It seems it has a message writen...
+  - But I cannot understand it. Shame.

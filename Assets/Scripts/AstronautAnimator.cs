@@ -91,19 +91,19 @@ namespace TarodevController {
             }
         }
 
-        private void OnDisable() {
-            _moveParticles.Stop();
+        //private void OnDisable() {
+        //    _moveParticles.Stop();
 
-            Interaction.OnObjectInteractStarted -= StopWalking;
-            Interaction.OnObjectInteractFinished -= EnableUpdate;
-        }
+        //    Interaction.OnObjectInteractStarted -= StopWalking;
+        //    Interaction.OnObjectInteractFinished -= EnableUpdate;
+        //}
 
-        private void OnEnable() {
-            _moveParticles.Play();
+        //private void OnEnable() {
+        //    _moveParticles.Play();
 
-            Interaction.OnObjectInteractStarted += StopWalking;
-            Interaction.OnObjectInteractFinished += EnableUpdate;
-        }
+        //    Interaction.OnObjectInteractStarted += StopWalking;
+        //    Interaction.OnObjectInteractFinished += EnableUpdate;
+        //}
 
 
         // jad did this chapuza jeje
